@@ -1,0 +1,6 @@
+library(dplyr)
+baltcitymary.emissions.bytype<-summarise(group_by(filter(NEI, fips == "24510"), year,type), Emissions=sum(Emissions))
+plot<-qplot(year,Emissions,data = baltcitymary.emissions.bytype, facets =.~type)
+print(plot)
+dev.copy(png,file="plot3.png",height=480,width=480)
+dev.off()
